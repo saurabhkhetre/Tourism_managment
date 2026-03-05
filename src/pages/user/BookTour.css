@@ -1,0 +1,174 @@
+.book-tour {
+    padding: var(--space-8) 0 var(--space-16);
+}
+
+.book-tour-grid {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--space-8);
+    align-items: start;
+}
+
+.book-form-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-lg);
+}
+
+.book-form-card h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+}
+
+.book-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.book-summary {
+    position: sticky;
+    top: 100px;
+}
+
+.summary-card {
+    background: var(--surface);
+    border-radius: var(--radius-xl);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.summary-card .summary-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.summary-card .summary-body {
+    padding: var(--space-6);
+}
+
+.summary-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    margin-bottom: var(--space-2);
+}
+
+.summary-card .summary-location {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    color: var(--primary);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-4);
+}
+
+.price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--border-light);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.price-row.total {
+    font-size: var(--font-size-lg);
+    font-weight: 800;
+    color: var(--text-primary);
+    padding-top: var(--space-3);
+    border-top: 2px solid var(--border);
+}
+
+.price-row .savings {
+    color: var(--success);
+}
+
+/* Steps */
+.booking-steps {
+    display: flex;
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.booking-step {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-tertiary);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    background: var(--bg-secondary);
+}
+
+.booking-step.active {
+    background: var(--primary);
+    color: var(--text-inverse);
+}
+
+.booking-step.completed {
+    background: var(--success-light);
+    color: #065f46;
+}
+
+.booking-success-page {
+    text-align: center;
+    padding: var(--space-16);
+}
+
+.booking-success-page .success-check {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--success-light);
+    color: var(--success);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-6);
+}
+
+.booking-success-page h2 {
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--space-3);
+}
+
+.booking-success-page p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+    .book-tour-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .book-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-form .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-steps {
+        flex-wrap: wrap;
+    }
+}

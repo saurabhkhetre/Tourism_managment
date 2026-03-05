@@ -1,0 +1,157 @@
+.user-dashboard {
+    padding: var(--space-8) 0 var(--space-16);
+}
+
+.dashboard-welcome {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    color: var(--text-inverse);
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+    box-shadow: 0 4px 20px rgba(8, 145, 178, 0.3);
+}
+
+.dashboard-welcome .welcome-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+}
+
+.dashboard-welcome h2 {
+    color: var(--text-inverse);
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--space-1);
+}
+
+.dashboard-welcome p {
+    opacity: 0.85;
+    font-size: var(--font-size-sm);
+}
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+}
+
+.dash-stat {
+    background: var(--surface);
+    padding: var(--space-5);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-xs);
+    text-align: center;
+}
+
+.dash-stat .stat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-3);
+}
+
+.dash-stat .stat-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    margin-bottom: var(--space-1);
+}
+
+.dash-stat .stat-label {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+.dashboard-section {
+    margin-bottom: var(--space-8);
+}
+
+.dashboard-section h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    margin-bottom: var(--space-4);
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--space-3);
+}
+
+.quick-action-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.quick-action-btn:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.quick-action-btn svg {
+    color: var(--primary);
+}
+
+.recent-booking-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-4) var(--space-5);
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-3);
+    transition: all var(--transition-fast);
+}
+
+.recent-booking-card:hover {
+    box-shadow: var(--shadow-sm);
+}
+
+.recent-booking-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.recent-booking-info h4 {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+}
+
+.recent-booking-info p {
+    font-size: var(--font-size-xs);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-welcome {
+        flex-direction: column;
+        text-align: center;
+    }
+}
