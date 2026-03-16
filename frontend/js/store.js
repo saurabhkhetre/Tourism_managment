@@ -134,7 +134,7 @@ const Store = {
         catch (err) { console.error(err); }
     },
 
-    getPackage(id) { return this._state.packages.find(p => p.id === id); },
+    getPackage(id) { return this._state.packages.find(p => p.id == id); },
     getActivePackages() { return this._state.packages.filter(p => p.active); },
     getFeaturedPackages() { return this._state.packages.filter(p => p.featured && p.active); },
 

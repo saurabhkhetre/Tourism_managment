@@ -12,8 +12,16 @@ const AdminPackagesPage = {
                 <table class="data-table"><thead><tr><th>Package</th><th>Category</th><th>Price</th><th>Rating</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody id="pkg-tbody">${this.renderRows(pkgs)}</tbody></table>
             </div>
-        </div>
-        <div class="modal-backdrop" id="pkg-modal" style="display:none"><div class="modal modal-lg">
+        </div>`;
+
+        // Create modal in document.body so it escapes admin layout stacking context
+        let modalEl = document.getElementById('pkg-modal');
+        if (modalEl) modalEl.remove();
+        modalEl = document.createElement('div');
+        modalEl.className = 'modal-backdrop';
+        modalEl.id = 'pkg-modal';
+        modalEl.style.display = 'none';
+        modalEl.innerHTML = `<div class="modal modal-lg">
             <div class="modal-header"><h3 id="pkg-modal-title">Add Package</h3><button class="btn btn-ghost btn-sm" id="close-pkg-modal">${Icons.x(18)}</button></div>
             <div class="modal-body"><form id="pkg-form">
                 <div class="form-row"><div class="form-group"><label class="form-label">Title</label><input type="text" class="form-input" id="pf-title" required></div><div class="form-group"><label class="form-label">Location</label><input type="text" class="form-input" id="pf-location" required></div></div>
@@ -24,10 +32,11 @@ const AdminPackagesPage = {
                 <div class="form-row"><div class="form-group"><label class="form-checkbox"><input type="checkbox" id="pf-featured"> Featured Package</label></div><div class="form-group"><label class="form-checkbox"><input type="checkbox" id="pf-active" checked> Active</label></div></div>
             </form></div>
             <div class="modal-footer"><button class="btn btn-ghost" id="cancel-pkg">Cancel</button><button class="btn btn-primary" id="save-pkg">Save Package</button></div>
-        </div></div>`;
+        </div>`;
+        document.body.appendChild(modalEl);
 
         let editId = null;
-        const modal = document.getElementById('pkg-modal');
+        const modal = modalEl;
         const openModal = (pkg = null) => {
             editId = pkg?.id || null;
             document.getElementById('pkg-modal-title').textContent = pkg ? 'Edit Package' : 'Add Package';

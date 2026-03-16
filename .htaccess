@@ -1,0 +1,56 @@
+# TravelVista — Apache URL Rewriting
+# Enables clean API and SPA routing on WAMP Server.
+
+RewriteEngine On
+RewriteBase /travelvista/
+
+# Pass Authorization header to PHP
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Don't rewrite existing files or directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# API routing — rewrite /api/xxx to /api/xxx.php
+RewriteRule ^api/auth/(.*)$ api/auth.php?action=$1 [QSA,L]
+RewriteRule ^api/packages/([0-9]+)/toggle$ api/packages.php?id=$1&action=toggle [QSA,L]
+RewriteRule ^api/packages/all$ api/packages.php?action=all [QSA,L]
+RewriteRule ^api/packages/([0-9]+)$ api/packages.php?id=$1 [QSA,L]
+RewriteRule ^api/packages$ api/packages.php [QSA,L]
+
+RewriteRule ^api/bookings/([0-9]+)/status$ api/bookings.php?id=$1&action=status [QSA,L]
+RewriteRule ^api/bookings/([0-9]+)/pay$ api/bookings.php?id=$1&action=pay [QSA,L]
+RewriteRule ^api/bookings/([0-9]+)/cancel$ api/bookings.php?id=$1&action=cancel [QSA,L]
+RewriteRule ^api/bookings/my$ api/bookings.php?action=my [QSA,L]
+RewriteRule ^api/bookings/revenue$ api/bookings.php?action=revenue [QSA,L]
+RewriteRule ^api/bookings$ api/bookings.php [QSA,L]
+
+RewriteRule ^api/reviews/recent$ api/reviews.php?action=recent [QSA,L]
+RewriteRule ^api/reviews/package/([0-9]+)$ api/reviews.php?action=package&id=$1 [QSA,L]
+RewriteRule ^api/reviews/([0-9]+)$ api/reviews.php?id=$1 [QSA,L]
+RewriteRule ^api/reviews$ api/reviews.php [QSA,L]
+
+RewriteRule ^api/enquiries/([0-9]+)/reply$ api/enquiries.php?id=$1&action=reply [QSA,L]
+RewriteRule ^api/enquiries/([0-9]+)/close$ api/enquiries.php?id=$1&action=close [QSA,L]
+RewriteRule ^api/enquiries/([0-9]+)$ api/enquiries.php?id=$1 [QSA,L]
+RewriteRule ^api/enquiries$ api/enquiries.php [QSA,L]
+
+RewriteRule ^api/hotels/([0-9]+)$ api/hotels.php?id=$1 [QSA,L]
+RewriteRule ^api/hotels$ api/hotels.php [QSA,L]
+
+RewriteRule ^api/transport/([0-9]+)$ api/transport.php?id=$1 [QSA,L]
+RewriteRule ^api/transport$ api/transport.php [QSA,L]
+
+RewriteRule ^api/users/([0-9]+)/toggle$ api/users.php?id=$1&action=toggle [QSA,L]
+RewriteRule ^api/users/([0-9]+)$ api/users.php?id=$1 [QSA,L]
+RewriteRule ^api/users$ api/users.php [QSA,L]
+
+RewriteRule ^api/settings$ api/settings.php [QSA,L]
+
+# Health check
+RewriteRule ^api/health$ - [R=200,L]
+
+# SPA Fallback — serve index.html for all other routes
+RewriteRule ^ index.html [L]

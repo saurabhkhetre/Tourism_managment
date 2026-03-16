@@ -106,7 +106,7 @@ const PackageDetailPage = {
         document.getElementById('submit-review')?.addEventListener('click', async () => {
             const comment = document.getElementById('review-comment')?.value;
             if (!comment) { Toast.warning('Please write a comment'); return; }
-            await Store.addReview({ packageId: pkg.id, rating: selectedRating, comment });
+            await Store.addReview({ packageId: pkg.id, packageTitle: pkg.title, rating: selectedRating, comment });
             Toast.success('Review submitted!');
             Router.resolve();
         });

@@ -1,8 +1,9 @@
 /**
- * TravelVista — API Client
+ * TravelVista — API Client (PHP Backend)
  * Wraps fetch with JWT token injection and error handling.
+ * Routes via .htaccess so URLs stay clean (e.g., /api/packages).
  */
-const API_BASE = '/api';
+const API_BASE = 'api';
 
 const api = {
     _getToken() { return localStorage.getItem('tv_token'); },
@@ -19,7 +20,7 @@ const api = {
 
         if (res.status === 401) {
             const data = await res.json().catch(() => ({}));
-            if (data.error === 'token_expired') {
+            if (data.error === 'token_expired' || data.error === 'authorization_required') {
                 this.clearToken();
                 window.location.hash = '#/login';
                 return;

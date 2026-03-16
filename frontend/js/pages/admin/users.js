@@ -31,8 +31,8 @@ const AdminUsersPage = {
         return users.map(u => `<tr>
             <td><div style="display:flex;align-items:center;gap:8px"><img src="${u.avatar}" alt="${u.name}" style="width:32px;height:32px;border-radius:50%;object-fit:cover"><span style="font-weight:500">${u.name}</span></div></td>
             <td>${u.email}</td><td>${u.phone || 'N/A'}</td><td><span class="badge badge-${u.role === 'admin' ? 'primary' : 'secondary'}">${u.role}</span></td>
-            <td><span class="badge badge-${u.blocked ? 'danger' : 'success'}">${u.blocked ? 'Blocked' : 'Active'}</span></td>
-            <td><div class="admin-table-actions"><button class="btn btn-ghost btn-sm toggle-u" data-id="${u.id}">${u.blocked ? Icons.check(14) : Icons.ban(14)}</button>${u.role !== 'admin' ? `<button class="btn btn-ghost btn-sm delete-u" data-id="${u.id}" style="color:var(--danger)">${Icons.trash(14)}</button>` : ''}</div></td>
+            <td><span class="badge badge-${!u.active ? 'danger' : 'success'}">${!u.active ? 'Blocked' : 'Active'}</span></td>
+            <td><div class="admin-table-actions"><button class="btn btn-ghost btn-sm toggle-u" data-id="${u.id}">${!u.active ? Icons.eye(14) : Icons.eyeOff(14)}</button>${u.role !== 'admin' ? `<button class="btn btn-ghost btn-sm delete-u" data-id="${u.id}" style="color:var(--danger)">${Icons.trash(14)}</button>` : ''}</div></td>
         </tr>`).join('');
     }
 };

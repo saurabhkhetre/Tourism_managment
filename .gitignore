@@ -1,22 +1,16 @@
-# Python
-__pycache__/
-*.py[cod]
-*.pyo
-backend/venv/
-backend/*.db
-*.sqlite3
+# PHP
+*.log
+/config/database.local.php
 
 # IDE
 .vscode/
 .idea/
 *.swp
+*.swo
 
 # OS
-Thumbs.db
 .DS_Store
+Thumbs.db
 
-# Antigravity
-.gemini/
-
-# Misc
-*.log
+# Build artifacts
+node_modules/
