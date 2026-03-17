@@ -256,28 +256,28 @@ const Store = {
 
     // ── Hotels & Transport (admin) ──
     async loadHotels() {
-        try { return await api.get('/hotels'); } catch { return []; }
+        try { return await api.get('/hotels'); } catch (e) { console.error(e); throw e; }
     },
     async addHotel(h) {
-        try { return await api.post('/hotels', h); } catch { return null; }
+        try { return await api.post('/hotels', h); } catch (e) { console.error(e); throw e; }
     },
     async updateHotel(h) {
-        try { await api.put(`/hotels/${h.id}`, h); } catch (e) { console.error(e); }
+        try { await api.put(`/hotels/${h.id}`, h); } catch (e) { console.error(e); throw e; }
     },
     async deleteHotel(id) {
-        try { await api.delete(`/hotels/${id}`); } catch (e) { console.error(e); }
+        try { await api.delete(`/hotels/${id}`); } catch (e) { console.error(e); throw e; }
     },
     async loadTransport() {
-        try { return await api.get('/transport'); } catch { return []; }
+        try { return await api.get('/transport'); } catch (e) { console.error(e); throw e; }
     },
     async addTransport(t) {
-        try { return await api.post('/transport', t); } catch { return null; }
+        try { return await api.post('/transport', t); } catch (e) { console.error(e); throw e; }
     },
     async updateTransport(t) {
-        try { await api.put(`/transport/${t.id}`, t); } catch (e) { console.error(e); }
+        try { await api.put(`/transport/${t.id}`, t); } catch (e) { console.error(e); throw e; }
     },
     async deleteTransport(id) {
-        try { await api.delete(`/transport/${id}`); } catch (e) { console.error(e); }
+        try { await api.delete(`/transport/${id}`); } catch (e) { console.error(e); throw e; }
     },
 
     // ── Settings ──

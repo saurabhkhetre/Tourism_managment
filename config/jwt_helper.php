@@ -267,6 +267,7 @@ function hotel_to_dict($row) {
         'capacity'      => (int)($row['capacity'] ?? 0),
         'type'          => $row['type'] ?? 'Hotel',
         'image'         => $row['image'] ?? '',
+        'available'     => (bool)($row['available'] ?? 1),
     ];
 }
 
@@ -281,6 +282,7 @@ function transport_to_dict($row) {
         'capacity'    => (int)($row['capacity'] ?? 0),
         'pricePerDay' => (float)($row['price_per_day'] ?? 0),
         'image'       => $row['image'] ?? '',
+        'available'   => (bool)($row['available'] ?? 1),
     ];
 }
 ?>

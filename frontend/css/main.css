@@ -5158,6 +5158,340 @@ h4 {
     color: var(--primary, #0891b2);
 }
 
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: inherit;
+    border-radius: var(--radius-md, 8px);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1.4;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--primary, #0891b2);
+    color: #fff;
+    border-color: var(--primary, #0891b2);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--primary-dark, #0e7490);
+    border-color: var(--primary-dark, #0e7490);
+    box-shadow: 0 4px 12px rgba(8, 145, 178, 0.3);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--text-secondary, #64748b);
+    border-color: transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background: var(--bg-secondary, #f1f5f9);
+    color: var(--text-primary, #0f172a);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary, #0891b2);
+    border-color: var(--border, #e2e8f0);
+}
+
+.btn-outline:hover:not(:disabled) {
+    border-color: var(--primary, #0891b2);
+    background: var(--primary-50, #ecfeff);
+}
+
+.btn-danger {
+    background: var(--danger, #ef4444);
+    color: #fff;
+    border-color: var(--danger, #ef4444);
+}
+
+.btn-danger:hover:not(:disabled) {
+    background: #dc2626;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+.btn-lg {
+    padding: 14px 28px;
+    font-size: 1rem;
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    border-radius: var(--radius-full, 100px);
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+
+.badge-primary {
+    background: var(--primary-50, #ecfeff);
+    color: var(--primary, #0891b2);
+}
+
+.badge-success {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.badge-warning {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.badge-danger {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.badge-info {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+/* ============================================================
+   FORM COMPONENTS
+   ============================================================ */
+.form-group {
+    margin-bottom: var(--space-4, 16px);
+}
+
+.form-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary, #0f172a);
+    margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea,
+select.form-input {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+    font-family: inherit;
+    color: var(--text-primary, #0f172a);
+    background: var(--bg-primary, #fff);
+    border: 1px solid var(--border, #e2e8f0);
+    border-radius: var(--radius-md, 8px);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+select.form-input:focus {
+    border-color: var(--primary, #0891b2);
+    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.12);
+}
+
+.form-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary, #64748b);
+    cursor: pointer;
+}
+
+.form-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--primary, #0891b2);
+    cursor: pointer;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4, 16px);
+}
+
+.form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--space-4, 16px);
+}
+
+/* ============================================================
+   MODAL
+   ============================================================ */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.modal {
+    position: relative;
+    display: block;
+    top: auto;
+    left: auto;
+    z-index: auto;
+    height: auto;
+    background: var(--surface, #fff);
+    border-radius: var(--radius-xl, 16px);
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: modalSlideIn 0.25s ease;
+}
+
+.modal-lg {
+    max-width: 700px;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-light, #f1f5f9);
+}
+
+.modal-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 16px 24px;
+    border-top: 1px solid var(--border-light, #f1f5f9);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-16px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================================
+   DATA TABLE
+   ============================================================ */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.data-table thead {
+    background: var(--bg-secondary, #f8fafc);
+}
+
+.data-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary, #64748b);
+    border-bottom: 1px solid var(--border-light, #f1f5f9);
+}
+
+.data-table td {
+    padding: 14px 16px;
+    color: var(--text-primary, #0f172a);
+    border-bottom: 1px solid var(--border-light, #f1f5f9);
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-secondary, #f8fafc);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ============================================================
+   MODAL OVERRIDES — Admin Layout
+   ============================================================ */
+.admin-main {
+    overflow: visible !important;
+}
+
+.admin-main-wrapper {
+    overflow: visible !important;
+}
+
+.admin-layout .modal-backdrop {
+    z-index: 9999;
+}
+
+.admin-layout .modal {
+    z-index: 10000;
+}
+
+/* ============================================================
+   RESPONSIVE — Modals & Forms
+   ============================================================ */
 @media (max-width: 768px) {
     .modal {
         max-width: 100%;
@@ -5168,40 +5502,4 @@ h4 {
     .form-row-3 {
         grid-template-columns: 1fr;
     }
-}
-
-/* Fix modal inside admin layout - ensure modals escape container */
-.admin-main {
-    overflow: visible !important;
-}
-
-.admin-main-wrapper {
-    overflow: visible !important;
-}
-
-.admin-layout .modal-backdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-}
-
-.admin-layout .modal {
-    z-index: 10000;
-}
-
-/* Force modal visibility - fix scaleIn animation issue */
-.modal-backdrop .modal {
-    opacity: 1 !important;
-    transform: scale(1) !important;
-    visibility: visible !important;
-    animation: none !important;
-}
-
-.modal-backdrop {
-    opacity: 1 !important;
-    visibility: visible !important;
-    animation: none !important;
 }

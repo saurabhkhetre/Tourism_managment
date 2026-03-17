@@ -38,12 +38,13 @@ if ($method === 'POST') {
     $db = getDB();
 
     $stmt = $db->prepare(
-        "INSERT INTO hotels (name, location, rating, price_per_night, capacity, type, image) VALUES (?, ?, ?, ?, ?, ?, ?)"
+        "INSERT INTO hotels (name, location, rating, price_per_night, capacity, type, image, available) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
     );
     $stmt->execute([
         $data['name'] ?? '', $data['location'] ?? '',
         $data['rating'] ?? 0, $data['pricePerNight'] ?? 0,
         $data['capacity'] ?? 0, $data['type'] ?? 'Hotel', $data['image'] ?? '',
+        isset($data['available']) ? ($data['available'] ? 1 : 0) : 1,
     ]);
 
     $htlId = $db->lastInsertId();
@@ -59,12 +60,14 @@ if ($method === 'PUT' && $id) {
     $db = getDB();
 
     $db->prepare(
-        "UPDATE hotels SET name=?, location=?, rating=?, price_per_night=?, capacity=?, type=?, image=? WHERE id=?"
+        "UPDATE hotels SET name=?, location=?, rating=?, price_per_night=?, capacity=?, type=?, image=?, available=? WHERE id=?"
     )->execute([
         $data['name'] ?? '', $data['location'] ?? '',
         $data['rating'] ?? 0, $data['pricePerNight'] ?? 0,
         $data['capacity'] ?? 0, $data['type'] ?? 'Hotel',
-        $data['image'] ?? '', $id,
+        $data['image'] ?? '',
+        isset($data['available']) ? ($data['available'] ? 1 : 0) : 1,
+        $id,
     ]);
 
     $stmt = $db->prepare("SELECT * FROM hotels WHERE id = ?");

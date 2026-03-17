@@ -108,7 +108,8 @@ CREATE TABLE IF NOT EXISTS hotels (
     price_per_night DECIMAL(10,2) DEFAULT 0,
     capacity INT DEFAULT 0,
     type VARCHAR(50) DEFAULT 'Hotel',
-    image VARCHAR(500) DEFAULT ''
+    image VARCHAR(500) DEFAULT '',
+    available TINYINT(1) DEFAULT 1
 ) ENGINE=InnoDB;
 
 -- ── Transport ────────────────────────────────────────────────
@@ -118,7 +119,8 @@ CREATE TABLE IF NOT EXISTS transport (
     type VARCHAR(50) DEFAULT 'Car',
     capacity INT DEFAULT 0,
     price_per_day DECIMAL(10,2) DEFAULT 0,
-    image VARCHAR(500) DEFAULT ''
+    image VARCHAR(500) DEFAULT '',
+    available TINYINT(1) DEFAULT 1
 ) ENGINE=InnoDB;
 
 -- ── Settings ─────────────────────────────────────────────────

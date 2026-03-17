@@ -38,11 +38,12 @@ if ($method === 'POST') {
     $db = getDB();
 
     $stmt = $db->prepare(
-        "INSERT INTO transport (name, type, capacity, price_per_day, image) VALUES (?, ?, ?, ?, ?)"
+        "INSERT INTO transport (name, type, capacity, price_per_day, image, available) VALUES (?, ?, ?, ?, ?, ?)"
     );
     $stmt->execute([
         $data['name'] ?? '', $data['type'] ?? 'Car',
         $data['capacity'] ?? 0, $data['pricePerDay'] ?? 0, $data['image'] ?? '',
+        isset($data['available']) ? ($data['available'] ? 1 : 0) : 1,
     ]);
 
     $trnId = $db->lastInsertId();
@@ -58,11 +59,13 @@ if ($method === 'PUT' && $id) {
     $db = getDB();
 
     $db->prepare(
-        "UPDATE transport SET name=?, type=?, capacity=?, price_per_day=?, image=? WHERE id=?"
+        "UPDATE transport SET name=?, type=?, capacity=?, price_per_day=?, image=?, available=? WHERE id=?"
     )->execute([
         $data['name'] ?? '', $data['type'] ?? 'Car',
         $data['capacity'] ?? 0, $data['pricePerDay'] ?? 0,
-        $data['image'] ?? '', $id,
+        $data['image'] ?? '',
+        isset($data['available']) ? ($data['available'] ? 1 : 0) : 1,
+        $id,
     ]);
 
     $stmt = $db->prepare("SELECT * FROM transport WHERE id = ?");
