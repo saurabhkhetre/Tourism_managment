@@ -4,14 +4,20 @@
  * MySQL connection via PDO for WAMP Server.
  */
 
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'travelvista');
-define('DB_USER', 'root');
-define('DB_PASS', '');          // WAMP default: empty password
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_NAME', getenv('DB_NAME') ?: 'travelvista');
+define('DB_USER', getenv('DB_USER') ?: 'root');
+define('DB_PASS', getenv('DB_PASS') !== false ? getenv('DB_PASS') : ''); // WAMP default: empty password
 define('DB_CHARSET', 'utf8mb4');
 
+// Production environment error handling
+if (getenv('APP_ENV') === 'production') {
+    ini_set('display_errors', '0');
+    error_reporting(0);
+}
+
 // JWT Secret Key
-define('JWT_SECRET', 'travelvista-jwt-secret-change-in-production');
+define('JWT_SECRET', getenv('JWT_SECRET') ?: 'travelvista-jwt-secret-change-in-production');
 define('JWT_EXPIRY', 60 * 60 * 24 * 7); // 7 days in seconds
 
 /**
