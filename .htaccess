@@ -2,7 +2,7 @@
 # Enables clean API and SPA routing on WAMP Server.
 
 RewriteEngine On
-RewriteBase /travelvista/
+RewriteBase "/Tourisum project/"
 
 # Pass Authorization header to PHP
 RewriteCond %{HTTP:Authorization} .

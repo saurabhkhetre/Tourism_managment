@@ -41,6 +41,7 @@ const Store = {
             }
             return { success: false, message: data.message || 'Login failed' };
         } catch (err) {
+            console.error('Login error:', err);
             return { success: false, message: err.message || 'Invalid email or password' };
         }
     },

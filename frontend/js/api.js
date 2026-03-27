@@ -16,7 +16,12 @@ const api = {
         const token = this._getToken();
         if (token) headers['Authorization'] = `Bearer ${token}`;
 
-        const res = await fetch(url, { ...options, headers });
+        let res;
+        try {
+            res = await fetch(url, { ...options, headers });
+        } catch (fetchErr) {
+            throw new Error(`Network error: ${fetchErr.message}`);
+        }
 
         if (res.status === 401) {
             const data = await res.json().catch(() => ({}));
@@ -25,11 +30,16 @@ const api = {
                 window.location.hash = '#/login';
                 return;
             }
-            throw { status: 401, ...data };
+            throw new Error(data.message || 'Unauthorized');
         }
         if (!res.ok) {
-            const data = await res.json().catch(() => ({ message: 'Request failed' }));
-            throw { status: res.status, ...data };
+            try {
+                const data = await res.json();
+                throw new Error(data.message || data.error || `HTTP ${res.status}`);
+            } catch (parseErr) {
+                const text = await res.text().catch(() => '');
+                throw new Error(text || `HTTP ${res.status}`);
+            }
         }
         return res.json();
     },
